@@ -2,19 +2,18 @@ package org.learning.java.springlamiapizzeriacrud.model;
 
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
-
 @Entity
 @Table(name = "pizzas")
 public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String img;
     private String name;
     private String description;
-    private BigDecimal price;
+    private double price;
 
-    public Pizza(String name, String description, BigDecimal price) {
+    public Pizza(String name, String description, double price) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -31,8 +30,12 @@ public class Pizza {
         return description;
     }
 
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return price;
+    }
+
+    public String getImg() {
+        return img;
     }
 
     public void setName(String name) {
@@ -43,7 +46,7 @@ public class Pizza {
         this.description = description;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }

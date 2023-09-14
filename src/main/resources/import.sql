@@ -1,0 +1,4 @@
+INSERT INTO pizzas (description, img, name, price) VALUES('pomodoro, origano', "https://upload.wikimedia.org/wikipedia/commons/1/11/Pizza_marinara.jpg", "Marinara",4.00);
+INSERT INTO pizzas (description, img, name, price) VALUES('pomodoro, mozzarella, origano', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/260px-Eq_it-na_pizza-margherita_sep2005_sml.jpg', "Margherita",4.99);
+INSERT INTO pizzas (description, img, name, price) VALUES('pomodoro, mozzarella, funghi', 'https://www.petitchef.it/imgupl/recipe/pizza-ai-funghi-freschi--455627p707846.jpg', "Funghi",5.99);
+INSERT INTO pizzas (description, img, name, price) VALUES('pomodoro, mozzarella, wurstel, patatine', 'https://www.scattidigusto.it/wp-content/uploads/2015/11/pizza-wurstel-patatine-pomodoro.jpg', "Wurstel e patatine",5.99);
