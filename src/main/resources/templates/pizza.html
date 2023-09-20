@@ -22,7 +22,6 @@
             <img th:src="${pizza.Img}" class="card-img-top" alt="pizza">
             <div class="card-body w-100 pt-0 px-0">
                 <h5 class="card-title bg-warning p-2 text-white" th:text="${pizza.Name}"></h5>
-                <p class="card-text px-2" th:text="${pizza.Description}"></p>
                 <p class="card-text fw-bold" th:text="${pizza.Price}+ '$'"></p>
 
                 <a class="btn btn-primary" th:href="@{/pizza/show/{id}(id=${pizza.id})}">Detail</a>
