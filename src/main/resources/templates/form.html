@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -10,10 +10,10 @@
     <title>Create pizza</title>
 </head>
 <body>
-<div class=" text-center">
+<div class=" text-center pb-1 text-white bg-warning">
     <h1>Add pizza</h1>
 </div>
-<div class="d-flex text-center mx-auto bg-warning row w-75">
+<div class="d-flex text-center mx-auto row w-75">
     <form
             id="pizza-form"
             th:object="${pizza}"
@@ -27,7 +27,7 @@
             </ul>
         </div>
 
-        <label for="name" class="form-label">Description</label>
+        <label for="description" class="form-label">Description</label>
         <input type="text" class="form-control" id="description" th:field="*{description}" th:errorClass="is-invalid">
         <div th:if="${#fields.hasErrors('description')}" class="invalid-feedback">
             <ul>
@@ -35,7 +35,7 @@
             </ul>
         </div>
 
-        <label for="name" class="form-label">Price</label>
+        <label for="price" class="form-label">Price</label>
         <input type="text" class="form-control" id="price" th:field="*{price}" th:errorClass="is-invalid">
         <div th:if="${#fields.hasErrors('price')}" class="invalid-feedback">
             <ul>
@@ -43,7 +43,10 @@
             </ul>
         </div>
 
-        <button type="submit" class="btn btn-primary">Save</button>
+        <hr>
+
+        <button type="submit" class="btn btn-warning">Save</button>
+        <a class="btn btn-warning" th:href="@{/pizza}">Cancel</a>
 
 
     </form>

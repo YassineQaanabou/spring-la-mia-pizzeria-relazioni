@@ -9,14 +9,15 @@
     <title>Pizza</title>
 </head>
 <body>
-<div class="text-center bg-warning  align-content-center text-white
+<div class="text-center bg-warning  align-content-center text-white pb-1
 
 ">
     <h1>Menù</h1>
 </div>
 <div class="row">
 
-    <div class="container text-center d-flex flex-wrap justify-content-evenly mt-3 pt-4 pb-4 ">
+    <div class="container text-center d-flex flex-wrap justify-content-evenly mt-3 pt-4 pb-4 "
+         th:if="${pizzas.size() > 0}">
 
         <div class="card shadow" style="width: 18rem" th:each="pizza : ${pizzas}">
             <img th:src="${pizza.Img}" class="card-img-top" alt="pizza">
@@ -24,7 +25,12 @@
                 <h5 class="card-title bg-warning p-2 text-white" th:text="${pizza.Name}"></h5>
                 <p class="card-text fw-bold" th:text="${pizza.Price}+ '$'"></p>
 
-                <a class="btn btn-primary" th:href="@{/pizza/show/{id}(id=${pizza.id})}">Detail</a>
+                <a class="btn btn-warning" th:href="@{/pizza/show/{id}(id=${pizza.id})}">Details</a>
+                <a class="btn btn-warning" th:href="@{/pizza/edit/{id}(id=${pizza.id})}">Edit</a>
+
+                <form th:action="@{/pizza/delete/{id}(id=${pizza.id})}" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-warning ">Delete</button>
+                </form>
 
             </div>
         </div>
@@ -33,9 +39,13 @@
     </div>
 </div>
 
+<div th:if="${pizzas.size() == 0}" class="alert alert-info text-center">
+    There is no pizza
+</div>
+
 <hr>
 <div class=" text-center align-content-center">
-    <a class="btn btn-primary" th:href="@{/pizza/create}">Add pizza</a>
+    <a class="btn btn-warning" th:href="@{/pizza/create}">Add pizza</a>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
