@@ -21,11 +21,21 @@ public class PizzaController {
     private PizzaRepository pizzaRepository;
 
     @GetMapping
-    public String index(Model model) {
-        List<Pizza> pizzaList = pizzaRepository.findAll();
+    public String index(@RequestParam(name = "keyword") Optional<String> searchKeyword,
+                        Model model) {
+        List<Pizza> pizzaList;
+        String keyword = "";
+        if (searchKeyword.isPresent()) {
+            keyword = searchKeyword.get();
+            pizzaList = pizzaRepository.findByNameOrDescription(keyword, keyword);
+        } else {
+            pizzaList = pizzaRepository.findAll();
+        }
         model.addAttribute("pizzas", pizzaList);
+        model.addAttribute("keyword", keyword);
         return "pizza";
     }
+
 
     @GetMapping("/show/{pizzaId}")
     public String show(@PathVariable("pizzaId") Integer id, Model model) {

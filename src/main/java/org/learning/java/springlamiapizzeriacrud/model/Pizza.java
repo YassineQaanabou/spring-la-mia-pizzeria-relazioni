@@ -1,6 +1,8 @@
 package org.learning.java.springlamiapizzeriacrud.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "pizzas")
@@ -9,7 +11,13 @@ public class Pizza {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String img;
+
+    @NotBlank
+    @Size(max = 255)
     private String name;
+
+    @NotBlank
+    @Size(max = 255)
     private String description;
     private double price;
 
@@ -29,6 +37,7 @@ public class Pizza {
     public String getName() {
         return name;
     }
+
 
     public String getDescription() {
         return description;
