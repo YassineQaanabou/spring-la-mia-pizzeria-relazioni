@@ -21,7 +21,6 @@
             method="POST"
             th:object="${pizza}"
     >
-        <!-- title -->
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input class="form-control" id="name" type="text" th:field="*{name}"
@@ -32,10 +31,9 @@
                 </ul>
             </div>
         </div>
-        <!-- isbn -->
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <input class="form-control" id="description" type="text" th:field="*{description}" maxlength="13"
+            <input class="form-control" id="description" type="text" th:field="*{description}"
                    th:errorClass="is-invalid">
             <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}">
                 <ul>
@@ -43,12 +41,10 @@
                 </ul>
             </div>
         </div>
-        <!-- authors -->
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
             <input class="form-control" id="price" type="text" th:field="*{price}">
         </div>
-        <!-- buttons -->
         <div>
             <button type="submit" class="btn btn-warning">Save</button>
             <a class="btn btn-warning" th:href="@{/pizza}">Cancel</a>

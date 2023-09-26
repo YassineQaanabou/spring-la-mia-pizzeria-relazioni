@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.util.List;
+
 @Entity
 @Table(name = "pizzas")
 public class Pizza {
@@ -20,6 +22,9 @@ public class Pizza {
     @Size(max = 255)
     private String description;
     private double price;
+
+    @OneToMany(mappedBy = "pizza")
+    private List<Offer> offers;
 
     public Pizza(String name, String description, double price) {
         this.name = name;
