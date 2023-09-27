@@ -6,6 +6,7 @@
           rel="stylesheet"
           integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
           crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/style.css}">
     <title>Pizza</title>
 </head>
 <body>
@@ -38,6 +39,11 @@
             <div class="card-body w-100 pt-0 px-0">
                 <h5 class="card-title bg-warning p-2 text-white" th:text="${pizza.Name}"></h5>
                 <p class="card-text fw-bold" th:text="${pizza.Price}+ '$'"></p>
+
+                <div th:if="${pizza.isOfferActive}" class="alert alert-warning" role="alert">
+                    Offer Available!
+
+                </div>
 
                 <a class="btn btn-warning" th:href="@{/pizza/show/{id}(id=${pizza.id})}">Details</a>
                 <a class="btn btn-warning" th:href="@{/pizza/edit/{id}(id=${pizza.id})}">Edit</a>

@@ -16,6 +16,7 @@ public class Offer {
     private String title;
     private LocalDate startDate;
     private LocalDate endDate;
+    
 
     public Integer getId() {
         return id;
@@ -37,6 +38,7 @@ public class Offer {
         return pizza;
     }
 
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -56,4 +58,6 @@ public class Offer {
     public void setPizza(Pizza pizza) {
         this.pizza = pizza;
     }
+
+
 }

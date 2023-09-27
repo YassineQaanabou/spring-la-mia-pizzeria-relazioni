@@ -29,6 +29,8 @@ public class PizzaController {
     public String index(@RequestParam(name = "keyword") Optional<String> searchKeyword,
                         Model model) {
         List<Pizza> pizzaList;
+        List<Offer> offerList;
+
         String keyword = "";
         if (searchKeyword.isPresent()) {
             keyword = searchKeyword.get();
@@ -36,7 +38,10 @@ public class PizzaController {
         } else {
             pizzaList = pizzaRepository.findAll();
         }
+        offerList = offerRepository.findAll();
+
         model.addAttribute("pizzas", pizzaList);
+        model.addAttribute("offers", offerList);
         model.addAttribute("keyword", keyword);
         return "pizza/list";
     }
@@ -47,7 +52,7 @@ public class PizzaController {
         Optional<Pizza> pizzaOptional = pizzaRepository.findById(id);
         if (pizzaOptional.isPresent()) {
             List<Offer> offerList;
-            offerList = offerRepository.findAll();
+            offerList = offerRepository.findByPizzaId(id);
             Pizza pizzaFromDB = pizzaOptional.get();
             model.addAttribute("offers", offerList);
             model.addAttribute("pizza", pizzaFromDB);

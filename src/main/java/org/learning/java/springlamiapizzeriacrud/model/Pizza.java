@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -67,4 +68,17 @@ public class Pizza {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public boolean isOfferActive() {
+        boolean flag = false;
+        for (Offer offer : offers) {
+            if (offer.getStartDate().isBefore(LocalDate.now()) && offer.getEndDate().isAfter(LocalDate.now())) {
+                flag = true;
+            }
+        }
+
+        return flag;
+    }
+
+
 }
