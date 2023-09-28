@@ -27,6 +27,14 @@ public class Pizza {
     @OneToMany(mappedBy = "pizza")
     private List<Offer> offers;
 
+    @ManyToMany()
+    @JoinTable(
+            name = "pizza_ingredients",
+            joinColumns = @JoinColumn(name = "pizza_id"),
+            inverseJoinColumns = @JoinColumn(name = "ingredient_id")
+    )
+    private List<Ingredient> ingredients;
+
     public Pizza(String name, String description, double price) {
         this.name = name;
         this.description = description;
@@ -57,6 +65,14 @@ public class Pizza {
         return img;
     }
 
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -80,5 +96,19 @@ public class Pizza {
         return flag;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public void setOffers(List<Offer> offers) {
+        this.offers = offers;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
 }

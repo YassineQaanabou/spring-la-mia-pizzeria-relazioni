@@ -33,7 +33,6 @@ public class OfferController {
         return "offer/list";
     }
 
-    // metodi per aggiungere un borrowing
     @GetMapping("/create")
     public String create(Model model) {
         Offer offer = new Offer();
@@ -71,5 +70,5 @@ public class OfferController {
         offerRepository.save(formOffer);
         return "redirect:/pizza";
     }
-    
+
 }

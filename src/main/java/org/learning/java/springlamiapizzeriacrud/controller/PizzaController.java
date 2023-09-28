@@ -1,8 +1,10 @@
 package org.learning.java.springlamiapizzeriacrud.controller;
 
 import jakarta.validation.Valid;
+import org.learning.java.springlamiapizzeriacrud.model.Ingredient;
 import org.learning.java.springlamiapizzeriacrud.model.Offer;
 import org.learning.java.springlamiapizzeriacrud.model.Pizza;
+import org.learning.java.springlamiapizzeriacrud.repository.IngredientRepository;
 import org.learning.java.springlamiapizzeriacrud.repository.OfferRepository;
 import org.learning.java.springlamiapizzeriacrud.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,8 @@ public class PizzaController {
     private PizzaRepository pizzaRepository;
     @Autowired
     private OfferRepository offerRepository;
+    @Autowired
+    private IngredientRepository ingredientRepository;
 
 
     @GetMapping
@@ -52,10 +56,14 @@ public class PizzaController {
         Optional<Pizza> pizzaOptional = pizzaRepository.findById(id);
         if (pizzaOptional.isPresent()) {
             List<Offer> offerList;
-            offerList = offerRepository.findByPizzaId(id);
+            List<Ingredient> ingredientList;
             Pizza pizzaFromDB = pizzaOptional.get();
+            offerList = offerRepository.findByPizzaId(id);
+            ingredientList = pizzaFromDB.getIngredients();
             model.addAttribute("offers", offerList);
             model.addAttribute("pizza", pizzaFromDB);
+            model.addAttribute("ingredients", ingredientList);
+
             return "pizza/detail";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -65,7 +73,10 @@ public class PizzaController {
 
     @GetMapping("/create")
     public String create(Model model) {
+        List<Ingredient> ingredientList = ingredientRepository.findAll();
         model.addAttribute("pizza", new Pizza());
+        model.addAttribute("ingredientList", ingredientList);
+
         return "pizza/form";
     }
 
