@@ -43,19 +43,15 @@
             </ul>
         </div>
 
-        <div class="mb-3">
-            <label for="ingredient">Ingredient</label>
-            <!-- questo select è mappato sull'attributo borrower del Borrowing -->
-            <select id="ingredient" class="form-select" th:field="*{ingredients}" th:errorClass="is-invalid">
-                <option value="">--Choose a ingredient--</option>
-                <option th:each="ingredient : ${ingredientList}" th:text="${ingredient.name}"
-                        th:value="${ingredient.id}"></option>
-            </select>
-            <div class="invalid-feedback" th:if="${#fields.hasErrors('ingredients')}">
-                <ul>
-                    <li th:each="err : ${#fields.errors('ingredient')}" th:text="${err}"></li>
-                </ul>
+        <div class="col-4 text-start">
+            <h4>Ingredients</h4>
+            <div class="form-check" th:each="Ingredient : ${ingredientList}">
+                <input class="form-check-input" type="checkbox" th:value="${Ingredient.id}"
+                       th:id="|Ingredient_${Ingredient.id}|" th:field="*{ingredients}">
+                <label class="form-check-label" th:for="|Ingredient_${Ingredient.id}|"
+                       th:text="${Ingredient.name}"></label>
             </div>
+        </div>
 
         <hr>
 
