@@ -93,6 +93,8 @@ public class PizzaController {
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Integer id, Model model) {
         Optional<Pizza> result = pizzaRepository.findById(id);
+        List<Ingredient> ingredientList = ingredientRepository.findAll();
+        model.addAttribute("ingredientList", ingredientList);
         if (result.isPresent()) {
             model.addAttribute("pizza", result.get());
             return "pizza/edit";

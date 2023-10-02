@@ -27,6 +27,14 @@
             </ul>
         </div>
 
+        <label for="img" class="form-label">Image</label>
+        <input type="text" class="form-control" id="img" th:field="*{img}" th:errorClass="is-invalid">
+        <div th:if="${#fields.hasErrors('img')}" class="invalid-feedback">
+            <ul>
+                <li th:each="err : ${#fields.errors('img')}" th:text="${err}"></li>
+            </ul>
+        </div>
+
         <label for="description" class="form-label">Description</label>
         <input type="text" class="form-control" id="description" th:field="*{description}" th:errorClass="is-invalid">
         <div th:if="${#fields.hasErrors('description')}" class="invalid-feedback">

@@ -26,6 +26,12 @@ INSERT INTO pizza_ingredients (pizza_id, ingredient_id) VALUES(4, 1);
 INSERT INTO pizza_ingredients (pizza_id, ingredient_id) VALUES(4, 2);
 INSERT INTO pizza_ingredients (pizza_id, ingredient_id) VALUES(4, 5);
 INSERT INTO pizza_ingredients (pizza_id, ingredient_id) VALUES(4, 6);
+INSERT INTO users (username, password) VALUES('cliente@gmail.com', 'cliente');
+INSERT INTO users (username, password) VALUES('pizzaiolo@gmail.com', 'pizzaiolo');
+INSERT INTO roles (name) VALUES('cliente');
+INSERT INTO roles (name) VALUES('pizzaiolo');
+
+
 
 
 
